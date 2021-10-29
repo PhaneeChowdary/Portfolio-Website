@@ -21,7 +21,7 @@ def project_titanic(request):
 
 # Titanic Project
 def titanic_prediction(PClass, Sex, SibSp, Parch):
-    model = pickle.load(open('titanic_rfc.pkl', 'rb+'))
+    model = pickle.load(open('model/titanic_rfc.pkl', 'rb+'))
     pred =  model.predict([[PClass, Sex, SibSp, Parch]])
     proba = model.predict_proba([[PClass, Sex, SibSp, Parch]])
     return pred,proba
@@ -42,7 +42,7 @@ def titanic_submit(request):
 
 # Diabetes Project
 def diabetes_prediction(pregnancies, glucouse, bp, skinthickness, insulin, bmi, dpf, age):
-    model = pickle.load(open('diabetes_rfc.pkl', 'rb+'))
+    model = pickle.load(open('model/diabetes_rfc.pkl', 'rb+'))
     scaler = pickle.load(open("scaler.sav", 'rb'))
     inputs = [[pregnancies, glucouse, bp, skinthickness, insulin, bmi, dpf, age]]
     pred = model.predict(scaler.transform(inputs))
@@ -66,7 +66,7 @@ def diabetes_submit(request):
 
 # Iris Project
 def iris_prediction(slen, swid, plen,pwid):
-    model = pickle.load(open('iris_log.pkl', 'rb+'))
+    model = pickle.load(open('model/iris_log.pkl', 'rb+'))
     inputs = [[slen, swid, plen, pwid]]
     pred = model.predict(inputs)
     proba = model.predict_proba(inputs)
@@ -86,7 +86,7 @@ def iris_submit(request):
 
 # Heart Project
 def heart_prediction(age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope,ca, thal):
-    model = pickle.load(open('heart_dtc.pkl', 'rb+'))
+    model = pickle.load(open('model/heart_dtc.pkl', 'rb+'))
     inputs = [[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope,ca, thal]]
     pred = model.predict(inputs)
     proba = model.predict_proba(inputs)
