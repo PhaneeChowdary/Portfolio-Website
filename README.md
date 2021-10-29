@@ -5,5 +5,7 @@
   <li>Clone or Download the Zipped project.</li>
   <li>Move to project directory.</li>
   <li>Make sure the version of python you are using is 3.8 or above.</li>
-  <li>Open your terminal and type <strong>python manage.py runserver</strong></li>
+  <li>Open your commant prompt or terminal and type pip install -r requirements.txt</li>
+  <li>At last type <strong>python manage.py runserver</strong></li>
+  <li>And follow the link that is provided by your machine to view on browser.</li>
 </ol>
