@@ -4,6 +4,6 @@
 <ol>
   <li>Clone or Download the Zipped project.</li>
   <li>Move to project directory.</li>
-  <li>Make sure python 3.8 or grater version is installed on your machine.</li>
+  <li>Make sure the version of python you are using is 3.8 or above.</li>
   <li>Open your terminal and type <strong>python manage.py runserver</strong></li>
 </ol>
