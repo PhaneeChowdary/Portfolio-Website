@@ -1,0 +1,79 @@
+{% extends 'diabetes.htm' %}
+{% load static %}
+
+{% block title %}
+<title>Iris Project</title>
+{% endblock %}
+
+
+<!-- Form -->
+{% block content %}
+<div class="container mt-5 mb-5 text-center" id="main">
+    <div class="conatiner-sm">
+        <img src="{% static '/images/versicolor.svg' %}" style="height:250px;width:80%;">
+    </div>
+    <section class="iris">
+        <div class="container p-5-sm">
+            <h1 style="color:rgb(0, 128, 128)">Iris Plant Classification</h1>
+            <h4>Classify the plants based on petal and sepal lengths, widths.</h4><br>
+
+            {% if Predicted == 0 %}
+            <br><h1 style="color:green">Iris-Setosa</h1>
+            <h5>Prediction probability : {{ Probability }}% </h5>
+            <h5 style="color:tomato">Decision Tree Classifier Model</h5><br>
+
+            {% elif Predicted == 1 %}
+            <br><h1 style="color:green">Iris-Versicolor</h1>
+            <h5>Prediction probability : {{ Probability }}%</h5>
+            <h5 style="color:tomato">Decision Tree Classifier Model</h5><br>
+
+            {% elif Prediction == 2 %}
+            <br><h1 style="color:green">Iris-Virginica</h1>
+            <h5>Prediction probability : {{ Probability }}%</h5>
+            <h5 style="color:tomato">Decision Tree Classifier Model</h5><br>
+
+            {% endif %}
+
+            <form action="{% url 'iris_submit' %}" method="POST">
+                {% csrf_token %}
+                <div class="row p-3">
+                    <div class="col">
+                        <input type="tel" class="form-control" placeholder="Sepal Length(cm)" name="SepalLengthCm" required>
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control" placeholder="Sepal Width(cm)" name="SepalWidthCm" required>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <input type="tel" class="form-control" placeholder="Petal Length(cm)" name="PetalLengthCm" required>
+                    </div>
+                    <div class="col">
+                        <input type="tel" class="form-control" placeholder="Petal Width(cm)" name="PetalWidthCm" required>
+                    </div>
+                </div>
+                <!-- <div class="row p-3 text-center">
+                    <div class="col">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Select Classification Model
+                            </button>
+                            <div class="dropdown-menu bg-warning">
+                                <a class="dropdown-item" href="#">Decision Tree model</a>
+                                <a class="dropdown-item" href="#">Logoistic model</a>
+                                <a class="dropdown-item" href="#">SVM model</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row p-5 text-center">
+                    <div class="col">
+                        <button type="submit" class="btn btn-warning">Predict</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}
