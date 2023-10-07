@@ -43,7 +43,7 @@ def titanic_submit(request):
 # Diabetes Project
 def diabetes_prediction(pregnancies, glucouse, bp, skinthickness, insulin, bmi, dpf, age):
     model = pickle.load(open('model/diabetes_rfc.pkl', 'rb+'))
-    scaler = pickle.load(open("scaler.sav", 'rb'))
+    scaler = pickle.load(open("model/scaler.sav", 'rb'))
     inputs = [[pregnancies, glucouse, bp, skinthickness, insulin, bmi, dpf, age]]
     pred = model.predict(scaler.transform(inputs))
     proba = model.predict_proba(scaler.transform(inputs))
@@ -60,7 +60,7 @@ def diabetes_submit(request):
     age = int(request.POST['Age'])
 
     predicted, probability = diabetes_prediction(pregnancies, glucouse, bp, skinthickness, insulin, bmi, dpf, age)
-    probability = round(probability[0][predicted], 3)*100
+    probability = round(probability[0][predicted][0], 3)*100
     return render(request, 'diabetes.htm', {'Predicted' : predicted, "Probability":probability})
 
 
@@ -105,4 +105,3 @@ def heart_submit(request):
     probability = round(probability[0][predicted[0]], 3)*100
     predicted = predicted[0]
     return render(request, 'heart.htm', {'Predicted' : predicted, "Probability":probability})
-
