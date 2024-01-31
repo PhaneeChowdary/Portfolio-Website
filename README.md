@@ -6,7 +6,7 @@
 
 ## Deployment
 
-To deploy this project:
+To run this project in your local machine:
 
 -   Download the project and open it in the code editor.
 -   Navigate to the project directory.
